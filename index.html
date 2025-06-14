@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ========================================
+         SEO・メタタグ設定
+    ========================================= -->
+    <!-- 基本メタタグ -->
+    <meta name="description" content="AeroVelo - 究極の軽量アルミ自転車フレーム。ヒルクライムに特化した空力性能と軽量化を追求したプレミアムバイクフレーム。">
+    <meta name="keywords" content="自転車,フレーム,軽量,アルミ,ヒルクライム,ロードバイク,AeroVelo">
+    <meta name="author" content="AeroVelo Bikes">
+    <!-- 開発環境用のインデックス回避設定 - 本番時は削除 -->
+    <meta name = "robots" content ="noindex,nofollow">
+    <!--  theme-color: モバイルブラウザのアドレスバー色  -->
+    <meta name="theme-color" content="#080808">
+    <!-- ファビコン（ブラウザタブのアイコン） -->
+    <link rel="icon" href="./img/pp.jpg">
+
+    
+    <title>AeroVelo 軽量アルミバイクフレーム</title>
+    
+    <!-- ========================================
+         構造化データ（JSON-LD）- SEO強化
+    ========================================= -->
+    <!-- テスト用の構造化データ -->
+    <script type="application/ld+json">
+      {
+       "@context": "https://schema.org",
+       "@type": "Organization",
+       "name": "AeroVelo Bikes (テスト用)",
+       "description": "構造化データのテスト",
+        "url": "https://example.com",
+       "logo": "https://example.com/logo.png"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "AeroVelo 軽量アルミフレーム",
+        "description": "ヒルクライムに特化した究極の軽量アルミ自転車フレーム",
+        "brand": {
+          "@type": "Brand",
+          "name": "AeroVelo"
+        },
+        "category": "自転車フレーム",
+        "image": "https://example.com/frame-image.jpg",
+        "offers": {
+          "@type": "Offer",
+          "price": "89000",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+      </script>
+
+    <!-- ========================================
+         グーグルフォント読み込み
+    ========================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--  "Noto Sans JP", sans-serif;/  "Poppins", sans-serif;400/500 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- ========================================
+         カスタムCSS読み込み - 機能別に分割
+    ========================================= -->
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> <!--swiper-->
+    <!-- ================================================================= -->
+
+    <!-- ========================================
+         外部ライブラリ・CDN読み込み
+    ========================================= -->
+     <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/"
+        }
+      }
+    </script><!--2025.5.24 最新 174.0-->
+        <!--========================================= CDN========================================= -->
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script><!--!2025/05/24 最新3.13.0-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script><!--!2025/05/24 最新swiper@11-->
+
+    <!-- モデルローダーコンポーネント -->
+    <script type="module" src="./src/js/model-loader-component.js"></script>
+
+
+  </head>
+  <body>
+    <!-- 背景ドット効果 -->
+    <div class="dot-background" id="dots-container"></div>
+    <div class="full-page-wrap">
+      <header>
+        <!-- ========================================
+             ヒーローセクション（メインビジュアル）
+        ========================================= -->
+        <section class="top-title-wrap" id="home">
+          <div class="hero-section">
+            <!-- 画像スライダー部分 -->
+            <div class="circle-container">
+                <div class="swiper hero-swiper">
+                  <div class="swiper-wrapper">
+                    <!-- スライド1: メインビジュアル -->
+                    <div class="swiper-slide">
+                      <div class="circle">
+                        <img src="./img/2.webp" alt="アルミ自転車フレームトップブランドのファーストビュー" loading="lazy"/>
+                      </div>
+                    </div>
+                    <!-- スライド2: アクション画像 -->
+                    <div class="swiper-slide">
+                      <div class="circle">
+                        <img src="./img/4.webp" alt="自転車だダイナミックに宙をまっている" loading="lazy" />
+                      </div>
+                    </div>
+                    <!-- スライド3: レース画像 -->
+                    <div class="swiper-slide">
+                      <div class="circle">
+                        <img src="./img/5.webp" alt="レースのワンシーンのカット" loading="lazy" />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ページネーション（点々）を追加 -->
+                  <div class="swiper-pagination"></div>
+                  <!-- 矢印ナビを追加 -->
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+           
+            </div>
+            <!-- タイトル・キャッチコピー部分 -->
+            <div class="content">
+              <div class="title-wrapper">
+                <!-- ロゴ画像（h1タグ内）+ アクセシビリティ対応 -->
+                <h1><img src="./img/aerovelo_logo.png" alt="AeroVelo - 軽量アルミ自転車フレームブランド" />
+                <span class="visually-hidden">
+                  AeroVelo - 軽量アルミ自転車フレームブランド</span>
+                </h1>
+
+                <p>The Ultimate Lightweight Aluminum Bicycle Frame</p>
+                <p class="title-text"><strong>軽量アルミフレームのトップブランド</strong></p>
+              </div>
+            </div>
+          </div>
+              <!-- CTA（行動喚起）ボタン -->
+              <button class="cta-button cta-position">試乗予約受付中
+              <p>お気軽にご相談ください</p>
+              </button>
+        </section>
+        
+        <!-- ========================================
+             ナビゲーション - デスクトップ・モバイル対応
+        ========================================= -->
+        <!-- デスクトップ用ナビゲーション -->
+        <nav class="desktop-menu z-max">
+          <ul>
+            <li><a href="#home">home</a></li>
+            <li><a href="#concept">concept</a></li>
+            <li><a href="#bikes">bikes</a></li>
+            <li><a href="#team-results">team result</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+        </nav>
+        
+        <!-- モバイル用ハンバーガーメニュー -->
+        <div class="hamburger-container" id="hamburgerContainer">
+          <button
+            class="hamburger-button"
+            id="hamburgerButton"
+            aria-expanded="false"
+            aria-label="メニュー"
+          >
+            <!-- ハンバーガーアイコン（3本線） -->
+            <div class="hamburger-icon">
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+            </div>
+          </button>
+          <!-- 展開されるメニュー -->
+          <nav class="hamburger-menu" id="hamburgerMenu">
+            <ul>
+              <li><a href="#home">home</a></li>
+              <li><a href="#concept">concept</a></li>
+              <li><a href="#bikes">bikes</a></li>
+              <li><a href="#team-results">team result</a></li>
+              <li><a href="#contact">contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      
+      <!-- ========================================
+           メインコンテンツ
+      ========================================= -->
+      <main>
+        <!-- ========================================
+             コンセプトセクション
+        ========================================= -->
+        <section class="scroll-section" id="concept">
+          <div class="scroll-content">
+            <h2>concept</h2>
+            <strong class="text-center">なぜAeroVeloが選ばれるのか？</strong><br>
+            <p>
+              <strong class="text-shine">究極の軽量アルミ自転車フレーム</strong>
+              「クライマーのために設計され、スピードを追求したデザイン。AeroVeloは空力性能と軽量化の限界を押し広げ、頂点を目指すライダーに比類なきパフォーマンスを提供する。」
+            </p>
+              <strong class="text-center">🚴‍♂️ Climb Faster, Ride Stronger 🚴‍♀️</strong>
+              <p class="text-center text-shine">🎉PAFORMANCE OF THE YEAR20XX 受賞🎉</p>
+              
+          <!-- 3Dモデル表示エリア -->
+          <div class="circle-section">
+            <div class="flip-on-scroll">
+              <!-- WebGL 3Dモデルローダー（自転車モデル） -->
+              <webgl-model-loader
+                model-url="./img/bic2.glb"
+                width="700px"
+                height="800px"
+                auto-rotate
+                background="transparent"
+                rotate-speed="0.005"
+                loading="lazy"
+              >
+              </webgl-model-loader >
+            </div>
+          </div>
+          </div>
+           
+          <!-- ========================================
+               製品紹介セクション
+          ========================================= -->
+          <section id="bikes">
+            <div class="scroll-content">
+              <h2>bikes</h2>
+              
+                <strong class="text-center">最高のヒルクライム性能を求めるライダーへ。</strong><br>
+              <p>
+                AeroVeloのフレームは、軽量性と剛性の究極のバランスを追求し、登坂時のパワー伝達を最大化。
+                「速さは軽さだけでは決まらない」—
+                AeroVeloの設計思想は、スムーズなエアロダイナミクスと無駄のない構造に基づいています。
+              </p>
+              <strong class="text-center text-shine">あなたに最適な一台を見つける👇</strong>
+  
+              <!-- 製品カテゴリー表示 -->
+              <div class="circle-section">
+                <!-- バイク一覧 -->
+                <div class="flip-on-scroll">
+                  <h3>bikes</h3>
+                  <p>豊富なラインナップ</p>
+                  <a href="#">
+                  <img class="flip-circle" src="./img/bike-sec (1).png" alt="軽量アルミバイクの正面ビュー" width="1920" height="1080">
+                  </a>
+                </div>
+  
+                <!-- フレーム詳細 -->
+                <div class="flip-on-scroll">
+                  <h3>frame</h3>
+                  <p>業界トップクラス軽量フレーム</p>
+                  <a href="#">
+                    <img class="flip-circle" src="./img/frame-sec (1).png" alt="軽量アルミフレームの正面ビュー" width="1920" height="1080">
+                    </a>
+                </div>
+                
+                <!-- 販売店情報 -->
+                <div class="flip-on-scroll">
+                  <h3>販売店</h3>
+                  <p class="text-shine">全国販売店多数<br>試乗予約承ります</p>
+                  <a href="#">
+                  <img class="flip-circle" src="./img/dealer.webp" alt="ディーラー、試乗予約のお問い合わせ" width="643" height="643">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <!-- ========================================
+               チーム実績セクション
+          ========================================= -->
+          <section id="team-results">
+            <div class="scroll-content">
+              <h2>team result</h2>
+              <p class="text-center text-shine"><strong>レースで実証されたパフォーマンス</strong></p>
+              <!-- レース結果をJSで動的に表示 -->
+              <div class="race-results"></div>  
+              <div class="circle-section">
+                <div class="flip-on-scroll">
+                  <!-- 回転アニメーション付きホイール画像 -->
+                  <img class="rotating-circle wheel-img" src="./img/wheel_madeinnob.png" alt="回転するホイール、飾りのオブジェクト">
+                </div>
+              </div>
+            </div>
+          </section>
+          </section>
+
+    </div>
+        
+        <!-- ========================================
+             お問い合わせフォーム
+        ========================================= -->
+        <section class="contact-form-wrap animate-fade-in" id="contact">
+          <h2>contact</h2>
+          <p class="text-center">お気軽にご相談ください</p>
+          <div class="contact-form-container">
+            <!-- 送信完了メッセージ -->
+            <div class="success-message" id="success-message">
+              メッセージが送信されました。ありがとうございます！
+            </div>
+
+            <form
+              class="contact-form"
+              id="contactForm"
+              onsubmit="return validateForm(event)"
+            >
+              <!-- ========================================
+                   セキュリティ対策
+              ========================================= -->
+              <!-- CSRF対策のためのトークン -->
+              <input
+                type="hidden"
+                name="csrf_token"
+                value="GENERATED_TOKEN_HERE"
+              />
+
+              <!-- Honeypot対策 (ボットが見えないフィールドに入力するとスパム判定) -->
+              <div class="honeypot-field">
+                <input
+                  type="text"
+                  name="website"
+                  id="website"
+                  autocomplete="off"
+                />
+              </div>
+
+              <!-- ========================================
+                   フォーム入力項目
+              ========================================= -->
+              <!-- お名前（必須） -->
+              <div class="form-group">
+                <label for="name" class="form-label"
+                  >お名前 <span style="color: red">*</span></label
+                >
+
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-input"
+                  required
+                />
+
+                <div class="error-message" id="name-error">
+                  お名前を入力してください
+                </div>
+              </div>
+
+              <!-- メールアドレス（必須） -->
+              <div class="form-group">
+                <label for="email" class="form-label"
+                  >メールアドレス <span style="color: red">*</span></label
+                >
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  required
+                />
+
+                <div class="error-message" id="email-error">
+                  有効なメールアドレスを入力してください
+                </div>
+              </div>
+
+              <!-- 電話番号（任意） -->
+              <div class="form-group">
+                <label for="phone" class="form-label">電話番号</label>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-input"
+                  pattern="[0-9\-+\s()]*"
+                />
+
+                <div class="error-message" id="phone-error">
+                  有効な電話番号を入力してください
+                </div>
+              </div>
+
+              <!-- 件名（必須） -->
+              <div class="form-group">
+                <label for="subject" class="form-label"
+                  >件名 <span style="color: red">*</span></label
+                >
+
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  class="form-input"
+                  required
+                />
+
+                <div class="error-message" id="subject-error">
+                  件名を入力してください
+                </div>
+              </div>
+
+              <!-- メッセージ本文（必須） -->
+              <div class="form-group">
+                <label for="message" class="form-label"
+                  >メッセージ <span style="color: red">*</span></label
+                >
+
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-textarea"
+                  required
+                ></textarea>
+
+                <div class="error-message" id="message-error">
+                  メッセージを入力してください
+                </div>
+              </div>
+
+              <!-- 送信ボタン -->
+              <button type="submit" class="submit-button" id="submit-button">
+                送信する
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+      
+      <!-- ========================================
+           フッター
+      ========================================= -->
+      <footer>
+        <div class="footer-content-wrapper">
+          <!-- フッターロゴ -->
+          <h3><img class="footer-logo" src="./img/aerovelo_logo.png" alt="アルミ自転車フレーム エアロヴェロのロゴ">
+          <span class="visually-hidden">
+                    AeroVelo - 軽量アルミ自転車フレームブランド</span>
+          </h3>
+          <p><strong>軽量アルミフレームのトップブランド</strong>
+          </p>
+          
+          <!-- フッターナビゲーション -->
+          <div class="footer-section">
+            <div class="fotter-sec-wrapper">
+              <!-- 製品情報リンク -->
+              <div class="footer-item">
+                <h4>製品情報</h4>
+                <ul>
+                  <li><a href="">ロードバイク</a></li>
+                  <li><a href="">フレーム</a></li>
+                </ul>
+              </div>
+              
+              <!-- サポート情報リンク -->
+              <div clas="footer-item">
+                <h4>サポート</h4>
+                <ul>
+                  <li><a href="#dealers">販売店一覧</a></li>
+                  <li><a href="#warranty">保証について</a></li>
+                  <li><a href="#faq">よくある質問</a></li>
+                </ul>
+              </div>
+              
+              <!-- 企業情報リンク -->
+              <div class="footer-item">
+                <h4>企業情報</h4>
+                <ul>
+                  <li><a href="#about">会社概要</a></li>
+                  <li><a href="#news">ニュース</a></li>
+                  <li><a href="#careers">採用情報</a></li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          <div class="footer-bottom">
+           <p>&copy; 2025 AeroVelo Bikes. All rights reserved.</p>
+           <div class="footer-links">
+             <a href="#privacy">プライバシーポリシー</a>
+             <a href="#terms">利用規約</a>
+           </div>
+         </div>
+        </div>
+      </footer>
+
+
+      
+      
+
+      <!-- ========================================
+           JavaScript読み込み - 機能別に分割
+      ========================================= -->
+    <script src="./src/js/result.js"></script><!--レースリザルト-->
+    <script src="./src/js/contact-form.js"></script><!--コンタクトフォーム-->
+    <!-- <script src="./src/js/hero-section.js"></script> -->
+    <script src="./src/js/humberger.js"></script><!--ハンバーガーメニュー-->
+    <!-- <script src="./src/js/hero-swiper.js"></script> -->
+    <script src="./src/js/main.js"></script>
+    <script src="./src/js/dot-bg.js"></script><!--背景画像-->
+  </body>
+</html>

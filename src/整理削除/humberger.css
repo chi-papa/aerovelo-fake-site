@@ -1,0 +1,234 @@
+/* ハンバーガーメニュー用のCSS */
+.hamburger-container {
+  position: fixed;
+  z-index: 9999;
+  top: 2rem;
+  right: 2rem;
+}
+
+.hamburger-button {
+  display: block;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 4px;
+}
+
+.hamburger-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger-button:focus {
+  outline: none;
+}
+
+.hamburger-icon {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  /* margin: 4rem 4rem; */
+}
+
+.hamburger-bar {
+  position: absolute;
+  left: 0;
+  width: 32px;
+  height: 4px;
+  background-color: #000;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger-bar:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-bar:nth-child(2) {
+  top: 10px;
+}
+
+.hamburger-bar:nth-child(3) {
+  top: 20px;
+}
+
+/* 開いた状態のアイコン */
+.hamburger-button.is-open .hamburger-bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-button.is-open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-button.is-open .hamburger-bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* メニュードロップダウン */
+.hamburger-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 80vw;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 9998;
+}
+
+.hamburger-menu.is-open {
+  /* width: 40vw;
+  opacity: 1;
+  transition: opacity 1s, width 2s; */
+
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.hamburger-menu ul {
+  list-style: none;
+}
+
+.hamburger-menu li:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.hamburger-menu a {
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.hamburger-menu a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* カスタマイズ用のクラス */
+.hamburger-bar.red {
+  background-color: #f44336;
+}
+
+.hamburger-menu.left {
+  right: auto;
+  left: 0;
+}
+
+.hamburger-menu.wide {
+  width: 300px;
+}
+
+.hamburger-menu.dark {
+  background-color: #333;
+}
+
+.hamburger-menu.dark a {
+  color: #fff;
+}
+
+.hamburger-menu.dark a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================PC用のナビゲーションメニュースタイル========================== */
+.desktop-menu {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: transparent;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.desktop-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.desktop-menu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  font-size: 1, 7rem;
+  padding: 10px 0;
+  position: relative;
+}
+
+.desktop-menu ul li a:hover {
+  color: #0066cc;
+}
+
+/* ホバー時の下線アニメーション */
+.desktop-menu ul li a:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #0066cc;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.desktop-menu ul li a:hover:after {
+  width: 100%;
+}
+
+/* レスポンシブ設定 */
+@media screen and (min-width: 901px) {
+  /* PC表示の場合 */
+  .desktop-menu {
+    display: flex;
+  }
+
+  .hamburger-container {
+    display: none; /* ハンバーガーメニューを非表示 */
+  }
+}
+
+@media screen and (max-width: 900px) {
+  /* モバイル表示の場合 */
+  .desktop-menu {
+    display: none; /* 通常メニューを非表示 */
+  }
+
+  .hamburger-container {
+    display: block; /* ハンバーガーメニューを表示 */
+  }
+}
+
+/* ヘッダーのレイアウト調整 */
+header {
+  position: relative;
+  width: 100%;
+}
+
+/* デスクトップメニューの背景色を設定（必要に応じて） */
+@media screen and (min-width: 769px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-title-wrap {
+    width: 100%;
+  }
+}

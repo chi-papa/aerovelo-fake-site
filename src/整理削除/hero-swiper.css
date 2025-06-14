@@ -1,0 +1,208 @@
+/* 改良版 Hero Swiper CSS */
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  perspective: 1200px; /* 3D効果のためのパースペクティブ */
+}
+
+.hero-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 画像の改良 */
+.hero-swiper .circle img {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(0.9) contrast(1.1); /* 少し暗くしてコントラストを強化 */
+}
+
+.hero-swiper .swiper-slide-active .circle img {
+  filter: brightness(1) contrast(1.2); /* アクティブスライドは明るく */
+  transform: scale(1.02); /* 微細なズームイン */
+}
+
+/* ページネーションの大幅改良 */
+.hero-swiper .swiper-pagination {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  margin: 0 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: transparent;
+  cursor: pointer;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: white;
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.hero-swiper .swiper-pagination-bullet:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.1);
+}
+
+/* ナビゲーションボタンの改良（四角問題の修正） */
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50% !important; /* !importantで確実に円形にする */
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: -25px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  /* 四角を完全に隠すための追加設定 */
+  overflow: hidden;
+}
+
+.hero-swiper .swiper-button-next:hover,
+.hero-swiper .swiper-button-prev:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+}
+
+.hero-swiper .swiper-button-next::after,
+.hero-swiper .swiper-button-prev::after {
+  font-size: 18px;
+}
+
+/* プログレスバーの追加 */
+.swiper-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.swiper-progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #4a90e2, #63b8ff);
+  width: calc(var(--progress, 0) * 100%);
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+/* Cube エフェクト用の追加スタイル */
+.hero-swiper.swiper-cube {
+  perspective: 1200px;
+}
+
+.hero-swiper .swiper-cube-shadow {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-swiper .swiper-slide {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* 3Dエフェクトの改良 */
+.hero-swiper.swiper-initialized .swiper-slide {
+  backface-visibility: hidden;
+}
+
+/* パララックス効果用のデータ属性対応 */
+.hero-swiper [data-swiper-parallax] {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .hero-swiper .swiper-button-next,
+  .hero-swiper .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+  }
+
+  .hero-swiper .swiper-button-next::after,
+  .hero-swiper .swiper-button-prev::after {
+    font-size: 14px;
+  }
+
+  .hero-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-swiper .swiper-button-next,
+  .hero-swiper .swiper-button-prev {
+    display: none; /* 小さい画面では非表示 */
+  }
+
+  .swiper-progress-bar {
+    height: 2px;
+  }
+}
+
+/* ローディングアニメーション */
+.hero-swiper:not(.swiper-initialized) {
+  opacity: 0;
+}
+
+.hero-swiper.swiper-initialized {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* カスタムオーバーレイ効果 */
+.hero-swiper .circle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 30%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  border-radius: 50%;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.hero-swiper .swiper-slide-active .circle::before {
+  opacity: 0.5;
+}

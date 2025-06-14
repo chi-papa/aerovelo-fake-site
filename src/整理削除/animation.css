@@ -1,0 +1,464 @@
+/* ページのベーススタイル */
+
+code {
+  display: block;
+
+  margin: 10px 0;
+
+  padding: 12px;
+
+  background-color: #2d2d2d;
+
+  border-radius: 5px;
+
+  font-family: monospace;
+
+  white-space: pre-wrap;
+
+  color: #c5c8c6;
+}
+
+.call-to-action {
+  position: relative;
+
+  text-align: center;
+
+  padding: 30px;
+
+  background-color: #0d0d0d;
+
+  border-radius: 10px;
+
+  margin-top: 40px;
+
+  overflow: hidden;
+}
+
+.cta-button {
+  display: inline-block;
+
+  margin-top: 20px;
+
+  padding: 12px 30px;
+
+  background-color: #0073e6;
+
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 50px;
+
+  font-size: 1.2em;
+
+  font-weight: bold;
+
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0059b3;
+
+  transform: scale(1.05);
+
+  box-shadow: 0 0 15px rgba(0, 115, 230, 0.6);
+}
+
+/* アニメーションコントロール用 */
+
+.controls {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+button {
+  padding: 8px 16px;
+
+  background-color: #333;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+/* 基本的な光るテキストスタイル */
+
+.text-shine {
+  position: relative;
+
+  display: inline-block;
+
+  color: #000000;
+
+  overflow: hidden;
+
+  font-weight: bold;
+}
+
+/* 左から右へ流れる光の効果 */
+
+.text-shine::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -100%;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+
+    rgba(255, 255, 255, 0) 0%,
+
+    rgba(184, 184, 183, 0.5) 50%,
+
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}
+
+/* 高速バージョン */
+
+.text-shine-fast::before {
+  animation-duration: 1.5s;
+}
+
+/* 低速バージョン */
+
+.text-shine-slow::before {
+  animation-duration: 5s;
+}
+
+/* 一回だけ実行するバージョン */
+
+.text-shine-once::before {
+  animation: shine 3s forwards;
+}
+
+/* 光の効果をより強く */
+
+.text-shine-intense::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+
+    rgba(255, 255, 255, 0) 0%,
+
+    rgba(255, 255, 255, 1) 50%,
+
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* ゴールドバージョン */
+
+.text-shine-gold {
+  color: #ffd700;
+
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.text-shine-gold::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+
+    rgba(255, 215, 0, 0) 0%,
+
+    rgba(255, 215, 0, 0.6) 50%,
+
+    rgba(255, 215, 0, 0) 100%
+  );
+}
+
+/* レインボーバージョン */
+
+.text-shine-rainbow {
+  background: linear-gradient(
+    to right,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #9400d3
+  );
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  color: transparent;
+}
+
+.text-shine-rainbow::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+
+    rgba(255, 255, 255, 0) 0%,
+
+    rgba(255, 255, 255, 0.6) 50%,
+
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* ネオンバージョン */
+
+.text-shine-neon {
+  color: #fff;
+
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+}
+
+.text-shine-neon::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+
+    rgba(0, 115, 230, 0) 0%,
+
+    rgba(0, 115, 230, 0.6) 50%,
+
+    rgba(0, 115, 230, 0) 100%
+  );
+}
+
+/* アイスブルーバージョン */
+
+.text-shine-ice {
+  color: #00c6ff;
+
+  text-shadow: 0 0 5px rgba(0, 198, 255, 0.5);
+}
+
+.text-shine-ice::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+
+    rgba(220, 240, 255, 0) 0%,
+
+    rgba(220, 240, 255, 0.8) 50%,
+
+    rgba(220, 240, 255, 0) 100%
+  );
+}
+
+/* シルバーバージョン */
+
+.text-shine-silver {
+  background: linear-gradient(to right, #c0c0c0, #eee, #c0c0c0);
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  color: transparent;
+
+  text-shadow: 0 0 2px rgba(200, 200, 200, 0.3);
+}
+
+.text-shine-silver::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+
+    rgba(255, 255, 255, 0) 0%,
+
+    rgba(255, 255, 255, 0.9) 50%,
+
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* 矢印効果（光の後に矢印の形状を表示） */
+
+.text-shine-arrow {
+  position: relative;
+}
+
+.text-shine-arrow::after {
+  content: "→";
+
+  position: absolute;
+
+  right: -25px;
+
+  opacity: 0;
+
+  animation: arrow-appear 3s 1s forwards;
+}
+
+@keyframes arrow-appear {
+  0% {
+    opacity: 0;
+
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+}
+
+/* マウスホバー時に発動するバージョン */
+
+.text-shine-hover::before {
+  animation: none;
+
+  left: -100%;
+}
+
+.text-shine-hover:hover::before {
+  animation: shine 2s forwards;
+}
+
+/* アニメーションディレイ用クラス */
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.delay-2000 {
+  animation-delay: 2s;
+}
+
+/* シーケンシャル表示用 */
+
+.text-shine-sequence .word {
+  position: relative;
+
+  display: inline-block;
+
+  overflow: hidden;
+
+  margin-right: 8px;
+}
+
+.text-shine-sequence .word::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -100%;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+
+    rgba(255, 255, 255, 0) 0%,
+
+    rgba(255, 255, 255, 0.8) 50%,
+
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  animation: shine 3s infinite;
+}
+
+.text-pointer {
+  position: relative;
+
+  overflow: visible;
+}
+
+.text-pointer::after {
+  content: "→";
+
+  position: absolute;
+
+  right: -30px;
+
+  top: 0;
+
+  font-size: 1.2em;
+
+  opacity: 0;
+
+  animation: pointer-fade 1s 1s forwards;
+}
+
+@keyframes pointer-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* コンテンツ領域のアニメーション */
+
+.highlight-content {
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition: all 1s ease;
+
+  padding: 20px;
+
+  background-color: #2c3e50;
+
+  border-radius: 8px;
+
+  margin-top: 30px;
+}
+
+.highlight-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}

@@ -1,0 +1,1174 @@
+@charset "utf-8";
+
+/* ========================================================================
+   1. BASE RESET & SETTINGS - 基本設定・リセット
+   ======================================================================== */
+
+/* ルートのフォントサイズを62.5%に設定して1rem = 10px換算 */
+:root {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+/* box-sizingをすべての要素に継承 */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* HTML基本設定 */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* ベースのbody設定 */
+body {
+  /* タイポグラフィー */
+  font-family: "Poppins", "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* レスポンシブフォントサイズ */
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+
+  /* カラーパレット */
+  --main-color: #ffffff;
+  --text-color: #000;
+
+  color: rgb(0, 0, 0);
+}
+
+/* 画像の基本設定 */
+img,
+picture,
+video,
+canvas,
+svg {
+  vertical-align: middle;
+  height: auto;
+}
+
+/* フォーム要素の基本リセット */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+/* 基本的なユーティリティクラス */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.z-max {
+  z-index: 999;
+}
+
+/* ========================================================================
+   2. LAYOUT - レイアウト設定
+   ======================================================================== */
+
+/* ヘッダー */
+header {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 27rem;
+  position: relative;
+  width: 100%;
+}
+
+/* メイン */
+main {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 共通スタイル */
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 0 5rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+h1 img {
+  max-width: 100%;
+  height: auto;
+}
+
+h2 {
+  text-align: center;
+  margin: 3rem 0 3rem;
+  text-transform: uppercase;
+}
+
+h3 {
+  text-transform: uppercase;
+}
+
+h4 {
+  text-transform: uppercase;
+}
+
+strong {
+  font-size: 1.8rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* スクロール位置調整 */
+#home {
+  scroll-margin-top: 300px;
+}
+#concept {
+  scroll-margin-top: -280px;
+}
+#bikes {
+  scroll-margin-top: 70px;
+}
+#team-results {
+  scroll-margin-top: 100px;
+}
+#contact {
+  scroll-margin-top: 100px;
+}
+
+.title-text {
+  position: absolute;
+  top: -17rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* CTAボタン */
+.cta-position {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 200;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #0073e6;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0059b3;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 115, 230, 0.6);
+}
+
+/* フッター */
+.footer-logo {
+  filter: invert(1);
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+footer p {
+  font-size: 2rem;
+}
+
+footer a {
+  font-size: 1.6rem;
+}
+
+.fotter-sec-wrapper {
+  display: flex;
+}
+
+/* ========================================================================
+   3. HERO SECTION - ヒーローセクション
+   ======================================================================== */
+
+.hero-section {
+  position: relative;
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  transform: scale(0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.content p {
+  font-size: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title-wrapper {
+  position: relative;
+  top: -14rem;
+}
+
+/* スクロールセクション */
+.scroll-section {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.scroll-content {
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30rem;
+  width: 45rem;
+}
+
+.concept-wrap {
+  width: 40%;
+  height: auto;
+  margin-top: 15rem;
+}
+
+.circle-section {
+  position: relative;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0;
+  perspective: 1000px;
+  gap: 4rem;
+  margin-top: 14rem;
+}
+
+/* サークルアニメーション */
+.rotating-circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.rotating-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-on-scroll {
+  opacity: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.flip-circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  transition: transform 0.3s ease;
+}
+
+.flip-circle:hover {
+  transform: scale(1.1);
+}
+
+.flip-on-scroll img {
+  transition: transform 0.3s ease;
+}
+
+.flip-on-scroll:hover img {
+  transform: scale(1.1);
+}
+
+/* レース結果表示エリア */
+.race-results {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 2rem;
+  width: 50vw;
+}
+
+/* 3Dモデルローダー位置調整 */
+webgl-model-loader {
+  position: relative;
+  top: -30vh;
+  right: 20%;
+}
+
+/* ヒーローセクションアニメーション */
+@keyframes circleExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes contentFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================================================
+   4. TEXT ANIMATIONS - テキスト光効果アニメーション
+   ======================================================================== */
+
+/* 基本的な光るテキストスタイル */
+.text-shine {
+  position: relative;
+  display: inline-block;
+  color: #000000;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+/* 左から右へ流れる光の効果 */
+.text-shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(184, 184, 183, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+/* ========================================================================
+   5. NAVIGATION - ナビゲーション
+   ======================================================================== */
+
+/* ハンバーガーメニュー（モバイル用） */
+.hamburger-container {
+  position: fixed;
+  z-index: 9999;
+  top: 2rem;
+  right: 2rem;
+}
+
+.hamburger-button {
+  display: block;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 4px;
+}
+
+.hamburger-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger-button:focus {
+  outline: none;
+}
+
+.hamburger-icon {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.hamburger-bar {
+  position: absolute;
+  left: 0;
+  width: 32px;
+  height: 4px;
+  background-color: #000;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger-bar:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-bar:nth-child(2) {
+  top: 10px;
+}
+
+.hamburger-bar:nth-child(3) {
+  top: 20px;
+}
+
+/* 開いた状態のアイコン */
+.hamburger-button.is-open .hamburger-bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-button.is-open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-button.is-open .hamburger-bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* メニュードロップダウン */
+.hamburger-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 80vw;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 9998;
+}
+
+.hamburger-menu.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.hamburger-menu ul {
+  list-style: none;
+}
+
+.hamburger-menu li:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.hamburger-menu a {
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.hamburger-menu a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* デスクトップメニュー（PC用） */
+.desktop-menu {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: transparent;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.desktop-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.desktop-menu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  font-size: 1.7rem;
+  padding: 10px 0;
+  position: relative;
+}
+
+.desktop-menu ul li a:hover {
+  color: #0066cc;
+}
+
+/* ホバー時の下線アニメーション */
+.desktop-menu ul li a:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #0066cc;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.desktop-menu ul li a:hover:after {
+  width: 100%;
+}
+
+/* ========================================================================
+   6. CONTACT FORM - お問い合わせフォーム（必要に応じて別ファイルから統合）
+   ======================================================================== */
+
+.contact-form-wrap {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.contact-form-container {
+  width: 100%;
+}
+
+/* ========================================================================
+   7. RESPONSIVE DESIGN - レスポンシブ対応
+   ======================================================================== */
+
+/* ヘッダーのレイアウト調整 */
+@media screen and (min-width: 769px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-title-wrap {
+    width: 100%;
+  }
+  webgl-model-loader {
+  position: relative;
+  top: -30vh;
+  right: 20%;
+}
+}
+
+/* PC表示（901px以上） */
+@media screen and (min-width: 901px) {
+  .desktop-menu {
+    display: flex;
+  }
+
+  .hamburger-container {
+    display: none;
+  }
+  webgl-model-loader {
+  /* position: relative; */
+  top: -5vh;
+  right: 0%;
+}
+
+/* モバイル・タブレット表示（900px以下） */
+@media screen and (max-width: 900px) {
+  .desktop-menu {
+    display: none;
+  }
+
+  .hamburger-container {
+    display: block;
+  }
+
+  .circle-section {
+    display: block;
+  }
+
+  #team-results {
+    margin-top: 70vh;
+  }
+
+  .cta-position {
+    margin-bottom: 7rem;
+    margin-left: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .scroll-content {
+    width: 90%;
+    max-width: 45rem;
+  }
+}
+
+/* ===============================
+   1. ドット背景エフェクト
+   ===============================
+   
+   サイト全体の背景に浮遊するドットエフェクトを追加
+   - パフォーマンス注意：多くのドットを表示する場合はCPU使用率に注意
+   - z-index: -1000 で他の要素の下に配置
+*/
+
+.dot-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  z-index: -1000; /* 他の要素より確実に下に配置 */
+  pointer-events: none; /* クリックイベントを通す */
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background-color: black;
+  opacity: 0.5;
+  transform-origin: center;
+  animation: float 20s infinite ease-in-out; /* 20秒で1サイクル */
+}
+
+/* ドットの浮遊アニメーション
+   - 滑らかな動きでユーザー体験を向上
+   - CPUパフォーマンスを考慮したease-in-out */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, 40px) scale(1.1);
+  }
+  50% {
+    transform: translate(10px, -30px) scale(0.9);
+  }
+  75% {
+    transform: translate(-20px, 20px) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* ===============================
+   2. ヒーロースワイパー（Swiper.js用）
+   ===============================
+   
+   メインビジュアル用のスワイパーコンポーネント
+   - 3D効果とパララックス対応
+   - レスポンシブデザイン完全対応
+   - アクセシビリティ考慮済み
+*/
+
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  perspective: 1200px; /* 3D効果の深度設定 */
+}
+
+.hero-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d; /* 3D変形を保持 */
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* スムーズな遷移 */
+}
+
+/* === 画像エフェクト === */
+.hero-swiper .circle img {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(0.9) contrast(1.1); /* 非アクティブ時は少し暗く */
+}
+
+.hero-swiper .swiper-slide-active .circle img {
+  filter: brightness(1) contrast(1.2); /* アクティブ時は明るく */
+  transform: scale(1.02); /* 微細なズームでフォーカス効果 */
+}
+
+/* === ページネーション（ドット）=== 
+   クリック可能性を向上させるため、サイズとホバー効果を最適化 */
+.hero-swiper .swiper-pagination {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  margin: 0 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: transparent;
+  cursor: pointer; /* クリック可能であることを明示 */
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: white;
+  transform: scale(1.2); /* アクティブ状態を視覚的に強調 */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.hero-swiper .swiper-pagination-bullet:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.1);
+}
+
+/* === ナビゲーションボタン ===
+   重要：四角形表示の問題を完全に解決 */
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px); /* ガラス効果 */
+  border-radius: 50% !important; /* !importantで確実に円形化 */
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: -25px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden; /* 四角形の残りを完全に隠す */
+}
+
+.hero-swiper .swiper-button-next:hover,
+.hero-swiper .swiper-button-prev:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+}
+
+.hero-swiper .swiper-button-next::after,
+.hero-swiper .swiper-button-prev::after {
+  font-size: 18px;
+}
+
+/* === プログレスバー ===
+   ユーザーに現在の位置と進行状況を視覚的に提供 */
+.swiper-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.swiper-progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #4a90e2, #63b8ff);
+  width: calc(var(--progress, 0) * 100%); /* CSS変数で進行度を制御 */
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+/* === Cube エフェクト対応 === */
+.hero-swiper.swiper-cube {
+  perspective: 1200px;
+}
+
+.hero-swiper .swiper-cube-shadow {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-swiper .swiper-slide {
+  backface-visibility: hidden; /* 3D回転時の裏面を非表示 */
+  -webkit-backface-visibility: hidden; /* Safari対応 */
+}
+
+/* === 3D エフェクト === */
+.hero-swiper.swiper-initialized .swiper-slide {
+  backface-visibility: hidden;
+}
+
+/* === パララックス効果 === 
+   data-swiper-parallax属性使用時の動作を制御 */
+.hero-swiper [data-swiper-parallax] {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* === カスタムオーバーレイ === 
+   スライドにヴィネット効果を追加してフォーカスを向上 */
+.hero-swiper .circle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 30%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  border-radius: 50%;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.hero-swiper .swiper-slide-active .circle::before {
+  opacity: 0.5;
+}
+
+/* === ローディング状態 === 
+   スワイパー初期化前後の滑らかな表示切り替え */
+.hero-swiper:not(.swiper-initialized) {
+  opacity: 0; /* 初期化前は非表示 */
+}
+
+.hero-swiper.swiper-initialized {
+  opacity: 1;
+  transition: opacity 0.5s ease; /* フェードイン効果 */
+}
+
+/* ===============================
+   3. コンタクトフォーム
+   ===============================
+   
+   ユーザビリティを重視したフォームデザイン
+   - バリデーション表示対応
+   - アクセシビリティ準拠
+   - レスポンシブ完全対応
+*/
+
+.contact-form-container {
+  max-width: 600px; /* 読みやすい幅に制限 */
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.contact-form-wrap {
+  margin-top: 10rem; /* ヘッダーとの適切な間隔 */
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em; /* 各要素間の統一された間隔 */
+  background-color: #f9f9f9; /* 背景と区別しやすい色 */
+  padding: 1rem 10rem;
+  /* border-radius: 8px; コメントアウト：必要に応じて有効化 */
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); コメントアウト：必要に応じて有効化 */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* ラベルと入力欄の適切な間隔 */
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: 16px; /* 読みやすいサイズ */
+}
+
+/* === 入力欄の統一スタイル === */
+.form-input,
+.form-textarea {
+  padding: 12px; /* タップしやすいサイズ */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px; /* iOS Safariのズーム防止 */
+  transition: border-color 0.3s; /* 滑らかなフォーカス遷移 */
+}
+
+/* === フォーカス状態 === 
+   アクセシビリティ重視：明確なフォーカス表示 */
+.form-input:focus,
+.form-textarea:focus {
+  outline: none; /* デフォルトのアウトラインを削除 */
+  border-color: #4a90e2; /* ブランドカラーでフォーカス表示 */
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); /* 視覚的なフォーカスリング */
+}
+
+.form-textarea {
+  min-height: 120px; /* 十分な入力スペース */
+  resize: vertical; /* 縦方向のみリサイズ可能 */
+}
+
+/* === エラー表示 === 
+   バリデーション失敗時のユーザー体験を向上 */
+.error-message {
+  color: #e74c3c; /* 明確なエラーカラー */
+  font-size: 14px;
+  margin-top: 4px;
+  display: none; /* 初期状態では非表示、JSで制御 */
+}
+
+.form-input.error,
+.form-textarea.error {
+  border-color: #e74c3c; /* エラー状態の視覚的表示 */
+}
+
+/* === スパム対策 === 
+   ハニーポット：ボットによる自動投稿を防ぐ */
+.honeypot-field {
+  display: none; /* 人間には見えない、ボットが入力してしまうフィールド */
+}
+
+/* === 送信ボタン === 
+   CTAとしての視認性とユーザビリティを重視 */
+.submit-button {
+  background-color: #4a90e2; /* ブランドカラー */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px; /* タップしやすいサイズ */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* スムーズなホバー効果 */
+  align-self: flex-end; /* 右寄せ配置 */
+}
+
+.submit-button:hover {
+  background-color: #3a7bc8; /* ホバー時の色変化 */
+}
+
+.submit-button:disabled {
+  background-color: #cccccc; /* 無効状態の表示 */
+  cursor: not-allowed; /* 操作不可を明示 */
+}
+
+/* === 成功メッセージ === 
+   送信完了後のユーザーフィードバック */
+.success-message {
+  background-color: #2ecc71; /* 成功を表す緑色 */
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: none; /* 初期状態では非表示、送信成功時にJSで表示 */
+}
+
+/* ===============================
+   レスポンシブデザイン対応
+   ===============================
+   
+   モバイルファーストアプローチで
+   各デバイスでの最適な表示を保証
+*/
+
+/* === タブレット・小型デスクトップ === */
+@media (max-width: 768px) {
+  /* ヒーロースワイパーのボタンサイズ調整 */
+  .hero-swiper .swiper-button-next,
+  .hero-swiper .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+  }
+
+  .hero-swiper .swiper-button-next::after,
+  .hero-swiper .swiper-button-prev::after {
+    font-size: 14px;
+  }
+
+  .hero-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0 6px;
+  }
+
+  /* コンタクトフォームのパディング調整 */
+  .contact-form {
+    padding: 20px; /* デスクトップ版の大きなパディングを縮小 */
+  }
+}
+
+/* === スマートフォン === */
+@media (max-width: 480px) {
+  /* ヒーロースワイパー：小画面ではボタンを非表示 */
+  .hero-swiper .swiper-button-next,
+  .hero-swiper .swiper-button-prev {
+    display: none; /* スワイプ操作に集中 */
+  }
+
+  /* プログレスバーを細く */
+  .swiper-progress-bar {
+    height: 2px;
+  }
+}
+
+/* ===============================
+   パフォーマンス最適化のヒント
+   ===============================
+   
+   1. ドット背景：多数のドット表示時はCPU使用率に注意
+   2. スワイパー：画像の最適化（WebP使用推奨）
+   3. アニメーション：will-change プロパティの適切な使用
+   4. フォーム：リアルタイムバリデーションのデバウンス実装
+   
+   ブラウザ対応：
+   - モダンブラウザ完全対応
+   - IE11以下は部分的対応（必要に応じてポリフィル追加）
+*/

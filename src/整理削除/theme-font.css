@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+/* ベースのbody設定 */
+body {
+  /*===================== タイポグラフィー =====================*/
+  /* メインフォント */
+  font-family: "Poppins", "Noto Sans JP", sans-serif;
+  /* --font-family-jp: "Noto Sans JP", sans-serif; */
+
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+  overflow-wrap: anywhere; /* 長い単語も途中で改行 */
+  -webkit-font-smoothing: antialiased; /* Mac用フォントレンダリング改善 */
+  -moz-osx-font-smoothing: grayscale; /* Mac Firefox用 */
+
+  /* フォントサイズはclampでレスポンシブ対応 */
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+
+  /*=========================== カラーパレ===========================*/
+  --main-color: #ffffff;
+  /* --sub-accent-color1: #e2cebc; */
+  /* --sub-accent-color2: #9aac94; */
+  /* --sub-accent-color3: #e6ded6; */
+  --text-color: #000;
+  /* --subText-color: #f2f2f2; */
+}
